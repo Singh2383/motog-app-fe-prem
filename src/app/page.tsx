@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section with Custom Backdrop */}
-      <section className="mt-16 sm:mt-20 relative w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
+      <section className="w-full max-w-sm bg-white/90 backdrop-blur-sm border-0 shadow-lg mb-6 sm:mb-0 text-center sm:text-left">
         <Image
           src="/images/hero-background.png"
           alt="Car marketplace backdrop"
@@ -55,29 +55,31 @@ export default function Home() {
                 Free Listing & Buying for Lifetime
               </p>
 
-              <div className="flex flex-col gap-3">
-                <Button
-                  size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white py-4 text-base font-bold"
-                  asChild
-                >
-                  <Link href="/sell">List Your Vehicle</Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-white hover:bg-gray-50 text-gray-900 py-4 text-base font-bold border-gray-300"
-                  asChild
-                >
-                  <Link href="/inventory">Browse Inventory</Link>
-                </Button>
-              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+  <Button
+    size="lg"
+    className="bg-blue-600 hover:bg-blue-700 text-white py-4 text-base font-bold w-full sm:w-auto"
+    asChild
+  >
+    <Link href="/sell">List Your Vehicle</Link>
+  </Button>
+  <Button
+    size="lg"
+    variant="outline"
+    className="bg-white hover:bg-gray-50 text-gray-900 py-4 text-base font-bold border-gray-300 w-full sm:w-auto"
+    asChild
+  >
+    <Link href="/inventory">Browse Inventory</Link>
+  </Button>
+</div>
+
             </CardContent>
           </Card>
         </div>
 
         {/* Car Image Overlay */}
-        <div className="absolute bottom-4 right-4 w-32 sm:w-40 md:w-56 lg:w-64">
+        <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-28 sm:w-40 md:w-56 lg:w-64">
+
           <Image
             src="/images/featured-car.png"
             alt="Featured car"
@@ -96,13 +98,13 @@ export default function Home() {
         </div>
 
         {data && data.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 rounded-x1 min-h-[400px]">
             {data.map((car) => (
               <Card
                 key={car.id}
                 className="hover:shadow-xl transition-all overflow-hidden group rounded-lg"
               >
-                <div className="relative h-40 sm:h-56">
+                <div className="relative h-40 sm:h-56 bg-gray-100">
                   <Image
                     src={car.images[0]}
                     alt={car.images[0]}
